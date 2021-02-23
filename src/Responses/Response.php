@@ -9,7 +9,7 @@ use Howkins\Borica\Contracts\Response as iResponse;
 
 class Response implements iResponse
 {
-    public $isVerified;
+    public $isVerified = false;
     /**
      * @var Howkins\Borica\Utils\ParameterBag
      */
@@ -118,6 +118,11 @@ class Response implements iResponse
     public function getPSign()
     {
         return $this->_parameters->get('P_SIGN');
+    }
+
+    public function getFields()
+    {
+        return $this->_parameters->all();
     }
 
     public function isSuccessful()

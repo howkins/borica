@@ -165,6 +165,11 @@ class Request implements iRequest
         return $this;
     }
 
+    public function getFields()
+    {
+        return $this->_parameters->all();
+    }
+
     public function sign(Borica $borica)
     {
         $mac = Borica::generateMac($this->_parameters->all(), false);
