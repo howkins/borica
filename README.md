@@ -17,7 +17,6 @@ src
         TransactionType.php
         Action.php
         Url.php
-    Credential.php
 ```
 
 ## Sale request example
