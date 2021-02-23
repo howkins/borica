@@ -48,7 +48,7 @@ class Borica
         $message = '';
 
         foreach ($macFields[$data['TRTYPE']] as $field) {
-            $value = $data[$field];
+            $value = isset($data[$field]) ? $data[$field] : null;
 
             if ($isResponse && mb_strlen($value) == 0) {
                 $message .= '-';

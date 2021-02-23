@@ -8,6 +8,7 @@ class SaleRequest extends Request
 {
     public function __construct()
     {
+        parent::__construct();
         $this->setTransactionType(TransactionType::SALE);
     }
 
@@ -35,7 +36,7 @@ class SaleRequest extends Request
             'NONCE',
             'P_SIGN'
         ] as $property) {
-            if ($this->$property === null || mb_strlen($this->$property) === 0) {
+            if ($this->parameters->get($property) === null || mb_strlen($this->parameters->get($property)) === 0) {
                 $this->errors->set($property, 'The attribute is \'' . $property . '\' required.');
             }
         }

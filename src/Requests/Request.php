@@ -62,13 +62,13 @@ class Request implements iRequest
 
     public function setOrder(int $order)
     {
-        $this->parameters->set('ORDER', $order % self::ORDER_LIMIT + 1 );
+        $this->parameters->set('ORDER',  str_pad($order % (self::ORDER_LIMIT + 1), 6, '0', STR_PAD_LEFT));
         return $this;
     }
 
     public function getOrder()
     {
-        return str_pad($this->parameters->get('ORDER'), 6, '0', STR_PAD_LEFT);
+        return $this->parameters->get('ORDER');
     }
 
     public function setDescription(string $description)
@@ -185,13 +185,12 @@ class Request implements iRequest
 
     public function getErrors()
     {
-        $this->errors->all();
+        return $this->errors->all();
     }
 
     public function sign(Borica $borica)
     {
         $mac = Borica::generateMac($this->parameters->all(), false);
-
         $this->setPSign($borica->sign($mac));
 
         return $this;
@@ -202,7 +201,8 @@ class Request implements iRequest
         $html = '<form action="' . $borica->getUrl() . '" method="POST" id="'. $formId .'">';
 
         foreach ($this->parameters->all() as $key => $value) {
-            $html .= '<input name="' . htmlspecialchars($key, ENT_QUOTES) . '" value="' . htmlspecialchars($value, ENT_QUOTES) . '" style="width: 100%;"><br>';
+            $html .= '<label for="'. htmlspecialchars($key, ENT_QUOTES).'">'. htmlspecialchars($key, ENT_QUOTES).'</label><br>';
+            $html .= '<input name="' . htmlspecialchars($key, ENT_QUOTES) . '" value="' . htmlspecialchars($value, ENT_QUOTES) . '" style="width: 100%;"><br><br>';
         }
 
         $html .= '<button type="submit">Submit</button></form>';
