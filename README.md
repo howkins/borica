@@ -1,23 +1,11 @@
-# borica
+# Borica EMV 3DS
 
+## Installation
 
-
-
+```shell
+composer require howkins/borica
 ```
-src
-    Utils
-        ParameterBag.php
-    Requests
-        Request.php
-        SaleRequest.php
-    Responses
-        Response.php
-        SaleResponse.php
-    Constants
-        TransactionType.php
-        Action.php
-        Url.php
-```
+
 
 ## Sale request example
 
@@ -53,12 +41,8 @@ if($saleRequest->validate()){
     exit;
 }
 
-$saleRequest->renderForm($borica);
-...
+echo $saleRequest->renderForm($borica);
 
-
-// $parameters = new ParameterBag(['AD.CUST_BOR_ORDER_ID' => 'value', 'TRAN_TRTYPE']);
-// $parameters->get('AD.CUST_BOR_ORDER_ID')
 ```
 
 ## Sale response example
