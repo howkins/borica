@@ -25,18 +25,35 @@ src
 <?php
 
 $borica = new Borica();
-$borica->setPrivateKey('');
+$borica->setPrivateKey('/var/www/certificates/borica.pem');
 $borica->setPrivateKeyPassword('');
 $borica->setSandbox(true);
 
 $saleRequest = new SaleRequest();
-$saleRequest->setOrder();
-$saleRequest->setTerminal();
+
+$saleRequest->setTerminal('V5400560');
+$saleRequest->setAmount(100);
+// $saleRequest->setCurrency('BGN');
+$saleRequest->setOrder(1);
+$saleRequest->setDescription('Order products');
+$saleRequest->setMerchant('6210005412');
+$saleRequest->setMerchantName('pensoft.net');
+$saleRequest->setEmail('g.zhelezov@pensoft.net');
+// $saleRequest->setCountry('BG');
+// $saleRequest->setMerchantGmt('+02');
+// $saleRequest->setAddendum('AD,TD');
+$saleRequest->setAdCustomBoricaOrderId($saleRequest->getOrder().' '.$saleRequest->getMerchant());
+$saleRequest->setTimestamp(time());
 $saleRequest->sign($borica);
 
-$saleRequest->renderForm($borica); //or
-$saleRequest->sendRequest($borica); //or
+if($saleRequest->validate()){
+    foreach(SaleRequest->getErrors() as $error){
+        print $error."\n";
+    }
+    exit;
+}
 
+$saleRequest->renderForm($borica);
 ...
 
 
@@ -47,13 +64,21 @@ $saleRequest->sendRequest($borica); //or
 ## Sale response example
 
 ```php
-
 $borica = new Borica();
-$borica->setCertificate('');
+$borica->setCertificate('/var/www/certificates/borica.cer');
 $borica->setSandbox(true);
 
-$saleResponse = new SaleResponse($_POST);
+$response = new Response($_POST);
 $response->verify($borica);
-$response->isSuccessful();
-$response->isVerified;
+
+if(!$response->isVerified){
+    print "Is not verified"; 
+    exit;
+}
+
+if($response->isSuccessful()){
+    print "Response code is successful";
+    exit;
+}
+
 ```

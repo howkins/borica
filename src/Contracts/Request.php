@@ -3,5 +3,4 @@
 namespace Howkins\Borica\Contracts;
 
 interface Request {
-    
 }
