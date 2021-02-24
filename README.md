@@ -35,7 +35,7 @@ $saleRequest->setTimestamp(time());
 $saleRequest->sign($borica);
 
 if($saleRequest->validate()){
-    foreach(SaleRequest->getErrors() as $error){
+    foreach($saleRequest->getErrors() as $error){
         print $error."\n";
     }
     exit;
