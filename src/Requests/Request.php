@@ -10,7 +10,7 @@ use Howkins\Borica\Utils\ErrorsBag;
 class Request implements iRequest
 {
 
-    const ORDER_LIMIT = 999999;
+    const ORDER_LIMIT = 1000000;
     const ADDENDUM = 'AD,TD';
 
     /**
@@ -62,7 +62,7 @@ class Request implements iRequest
 
     public function setOrder(int $order)
     {
-        $this->parameters->set('ORDER',  str_pad($order % self::ORDER_LIMIT + 1, 6, '0', STR_PAD_LEFT));
+        $this->parameters->set('ORDER',  str_pad(($order % self::ORDER_LIMIT), 6, '0', STR_PAD_LEFT));
         return $this;
     }
 
