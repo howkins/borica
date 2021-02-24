@@ -62,7 +62,7 @@ class Request implements iRequest
 
     public function setOrder(int $order)
     {
-        $this->parameters->set('ORDER',  str_pad($order % (self::ORDER_LIMIT + 1), 6, '0', STR_PAD_LEFT));
+        $this->parameters->set('ORDER',  str_pad($order % self::ORDER_LIMIT + 1, 6, '0', STR_PAD_LEFT));
         return $this;
     }
 
