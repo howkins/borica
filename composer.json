@@ -7,11 +7,13 @@
             "email": "howkinss@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
     "autoload": {
         "psr-4": {
             "Howkins\\Borica\\": "src/"
         }
     },
-    "version": "1.0.2"
+    "version": "1.0.3"
 }
