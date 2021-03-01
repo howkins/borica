@@ -210,10 +210,10 @@ class Request implements iRequest
         return $html;
     }
 
-    public function sendRequest(Borica $borica)
+    public function sendRequest(Borica $borica, $action = 'POST')
     {
         $client = new \GuzzleHttp\Client();
-        return $client->request('POST', $borica->getUrl(), [
+        return $client->request($action, $borica->getUrl(), [
             'allow_redirects' => true,
             'form_params' => $this->parameters->all()
         ]);

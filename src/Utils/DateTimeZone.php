@@ -6,7 +6,7 @@ use \DateTimeZone as DTZ;
 
 class DateTimeZone extends DTZ
 {
-    public function getOffset(\DateTimeInterface $datetime)
+    public function getOffset($datetime)
     {
         $offset = parent::getOffset($datetime);
         $offsetInHours = $offset / 60 / 60;
