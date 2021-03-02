@@ -6,6 +6,7 @@ use Howkins\Borica\Borica;
 use Howkins\Borica\Utils\ParameterBag;
 use Howkins\Borica\Constants\Action;
 use Howkins\Borica\Contracts\Response as iResponse;
+use Howkins\Borica\Constants\ResponseCode;
 
 class Response implements iResponse
 {
@@ -28,6 +29,19 @@ class Response implements iResponse
     public function getResponseCode()
     {
         return $this->_parameters->get('RC');
+    }
+
+    public function getResponseCodeMessage() : string
+    {
+        if(!$this->_parameters->has('RC')) {
+            return 'Response code is not exists.';
+        }
+
+        if(!array_key_exists($this->_parameters->get('RC'), ResponseCode::ERRORS)){
+            return $this->_parameters->get('RC');
+        }
+
+        return ResponseCode::ERRORS[$this->_parameters->get('RC')];
     }
 
     public function getStatusMessage()
