@@ -31,17 +31,21 @@ class Response implements iResponse
         return $this->_parameters->get('RC');
     }
 
-    public function getResponseCodeMessage() : string
+    public function getResponseCodeMessage(array $responseCodeErrors = []) : string
     {
+        if(empty($responseCodeErrors)){
+            $responseCodeErrors = ResponseCode::ERRORS;
+        }
+
         if(!$this->_parameters->has('RC')) {
             return 'Response code is not exists.';
         }
 
-        if(!array_key_exists($this->_parameters->get('RC'), ResponseCode::ERRORS)){
+        if(!array_key_exists($this->_parameters->get('RC'), $responseCodeErrors)){
             return $this->_parameters->get('RC');
         }
 
-        return ResponseCode::ERRORS[$this->_parameters->get('RC')];
+        return $responseCodeErrors[$this->_parameters->get('RC')];
     }
 
     public function getStatusMessage()
