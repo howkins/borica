@@ -20,7 +20,7 @@ class StatusCheckRequest extends Request
             'TERMINAL',
             'TRTYPE',
             'ORDER',
-            'TRAN_TRTPE',
+            'TRAN_TRTYPE',
             'NONCE',
             'P_SIGN'
         ] as $property) {
