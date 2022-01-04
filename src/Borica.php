@@ -62,10 +62,12 @@ class Borica
 
     public static function generateMacCommon(array $data, bool $isResponse)
     {
-        $macFields = $isResponse ? Mac::COMMON_RESPONSE_FIELDS : Mac::COMMON_REQUEST_FIELDS;
-
         $message = '';
-
+        if(!isset($data['TRTYPE'])){
+            return $message;
+        }
+        $macFields = $isResponse ? Mac::COMMON_RESPONSE_FIELDS : Mac::COMMON_REQUEST_FIELDS;
+        
         foreach ($macFields[$data['TRTYPE']] as $field) {
             $message .= mb_strlen($data[$field]) . $data[$field];
         }
