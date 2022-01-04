@@ -14,6 +14,5 @@
         "psr-4": {
             "Howkins\\Borica\\": "src/"
         }
-    },
-    "version": "1.2.2"
+    }
 }
