@@ -135,7 +135,7 @@ class Response implements iResponse
 
     public function getPSign()
     {
-        return $this->_parameters->get('P_SIGN');
+        return $this->_parameters->get('P_SIGN', '');
     }
 
     public function getFields()
