@@ -43,9 +43,11 @@ class Borica
 
     public static function generateMacExtended(array $data, bool $isResponse)
     {
-        $macFields = $isResponse ? Mac::EXTENDED_RESPONSE_FIELDS : MAC::EXTENDED_REQUEST_FIELDS;
-
         $message = '';
+        if(!isset($data['TRTYPE'])){
+            return $message;
+        }
+        $macFields = $isResponse ? Mac::EXTENDED_RESPONSE_FIELDS : MAC::EXTENDED_REQUEST_FIELDS;
 
         foreach ($macFields[$data['TRTYPE']] as $field) {
             $value = isset($data[$field]) ? $data[$field] : null;
