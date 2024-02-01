@@ -80,7 +80,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ],
         TransactionType::DEFERRED_AUTHORIZATION => [
             'ACTION',
@@ -97,7 +97,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ],
         TransactionType::COMPLETE_DEFERRED_AUTHORIZATION => [
             'ACTION',
@@ -114,7 +114,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ],
         TransactionType::REVERSE_DEFERRED_AUTHORIZATION => [
             'ACTION',
@@ -131,7 +131,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ],
         TransactionType::REVERSAL => [
             'ACTION',
@@ -148,7 +148,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ],
         TransactionType::STATUS_CHECK => [
             'ACTION',
@@ -165,7 +165,7 @@ class Mac
             'ECI',
             'TIMESTAMP',
             'NONCE',
-            'RFU'
+            // 'RFU'
         ]
     ];
 

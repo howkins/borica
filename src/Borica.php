@@ -52,6 +52,10 @@ class Borica
         $macFields = $isResponse ? Mac::GENERAL_RESPONSE_FIELDS : Mac::GENERAL_REQUEST_FIELDS;
         
         foreach ($macFields[$data['TRTYPE']] as $field) {
+            if($field == 'RFU'){
+                $message .= $data[$field];
+                continue;
+            }
             $message .= mb_strlen($data[$field]) . $data[$field];
         }
 
