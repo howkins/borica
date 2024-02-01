@@ -32,13 +32,30 @@ class Borica
         $this->isSandbox = $sandbox;
     }
 
-    public static function generateMac(array $data, bool $isResponse, bool $is_mac_extended = true)
+    public static function generateMac(array $data, bool $isResponse, string $macType = '')
     {
-        if ($is_mac_extended == true) {
-            return self::generateMacExtended($data, $isResponse);
+        switch($macType){
+            case 'MAC_EXTENDED': 
+                return self::generateMacExtended($data, $isResponse);
+            case 'MAC_COMMON':
+                return self::generateMacCommon($data, $isResponse);
+            default:
+                return self::generateMacGeneral($data, $isResponse);
+        }
+    }
+
+    public static function generateMacGeneral(array $data, bool $isResponse){
+        $message = '';
+        if(!isset($data['TRTYPE'])){
+            return $message;
+        }
+        $macFields = $isResponse ? Mac::GENERAL_RESPONSE_FIELDS : Mac::GENERAL_REQUEST_FIELDS;
+        
+        foreach ($macFields[$data['TRTYPE']] as $field) {
+            $message .= mb_strlen($data[$field]) . $data[$field];
         }
 
-        return self::generateMacCommon($data, $isResponse);
+        return $message;
     }
 
     public static function generateMacExtended(array $data, bool $isResponse)

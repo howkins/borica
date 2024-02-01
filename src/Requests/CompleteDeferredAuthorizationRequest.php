@@ -36,6 +36,7 @@ class CompleteDeferredAuthorizationRequest extends Request
             'RRN',
             'INT_REF',
             'NONCE',
+            'RFU',
             'P_SIGN'
         ] as $property) {
             if ($this->parameters->get($property) === null || mb_strlen($this->parameters->get($property)) === 0) {

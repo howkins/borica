@@ -5,6 +5,171 @@ use Howkins\Borica\Constants\TransactionType;
 
 class Mac
 {
+    const GENERAL_REQUEST_FIELDS = [
+        TransactionType::SALE => [
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::DEFERRED_AUTHORIZATION => [
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::COMPLETE_DEFERRED_AUTHORIZATION => [
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::REVERSE_DEFERRED_AUTHORIZATION => [
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::REVERSAL => [
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::STATUS_CHECK => [
+            'TERMINAL',
+            'TRTYPE',
+            'ORDER',
+            'NONCE'
+        ]
+    ];
+
+    const GENERAL_RESPONSE_FIELDS = [
+        TransactionType::SALE => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::DEFERRED_AUTHORIZATION => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::COMPLETE_DEFERRED_AUTHORIZATION => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::REVERSE_DEFERRED_AUTHORIZATION => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::REVERSAL => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ],
+        TransactionType::STATUS_CHECK => [
+            'ACTION',
+            'RC',
+            'APPROVAL',
+            'TERMINAL',
+            'TRTYPE',
+            'AMOUNT',
+            'CURRENCY',
+            'ORDER',
+            'RRN',
+            'INT_REF',
+            'PARES_STATUS',
+            'ECI',
+            'TIMESTAMP',
+            'NONCE',
+            'RFU'
+        ]
+    ];
+
+    // Depricated after 31.07.2023
     const EXTENDED_REQUEST_FIELDS = [
         TransactionType::SALE => [
             'TERMINAL',
@@ -63,7 +228,7 @@ class Mac
             'NONCE'
         ]
     ];
-
+    // Depricated after 31.07.2023
     const COMMON_REQUEST_FIELDS = [
         TransactionType::SALE => [
             'TERMINAL',
@@ -106,7 +271,7 @@ class Mac
             'ORDER'
         ]
     ];
-
+    // Depricated after 31.07.2023
     const EXTENDED_RESPONSE_FIELDS = [
         TransactionType::SALE => [
             'ACTION',
@@ -205,6 +370,7 @@ class Mac
             'NONCE'
         ]
     ];
+    // Depricated after 31.07.2023
     const COMMON_RESPONSE_FIELDS = [
         TransactionType::SALE => [
             'TERMINAL',

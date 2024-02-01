@@ -133,6 +133,11 @@ class Response implements iResponse
         return $this->_parameters->get('NONCE');
     }
 
+    public function getReservedForFutureUse()
+    {
+        return $this->_parameters->get('RFU');
+    }
+
     public function getPSign()
     {
         return $this->_parameters->get('P_SIGN', '');

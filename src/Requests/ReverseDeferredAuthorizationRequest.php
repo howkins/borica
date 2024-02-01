@@ -10,6 +10,7 @@ class ReverseDeferredAuthorizationRequest extends Request
     {
         parent::__construct();
         $this->setTransactionType(TransactionType::REVERSE_DEFERRED_AUTHORIZATION);
+        $this->setReservedForFutureUse();
     }
 
     public function validate()
@@ -36,6 +37,7 @@ class ReverseDeferredAuthorizationRequest extends Request
             'RRN',
             'INT_REF',
             'NONCE',
+            'RFU',
             'P_SIGN'
         ] as $property) {
             if ($this->parameters->get($property) === null || mb_strlen($this->parameters->get($property)) === 0) {

@@ -16,6 +16,10 @@ class ParameterBag implements \IteratorAggregate, \Countable
         return $this->parameters;
     }
 
+    public function except(array $keys = []){
+        return array_diff_key($this->parameters, array_flip($keys));
+    }
+
     public function keys()
     {
         return array_keys($this->parameters);

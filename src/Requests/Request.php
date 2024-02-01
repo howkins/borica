@@ -172,6 +172,12 @@ class Request implements iRequest
         return $this;
     }
 
+    public function setReservedForFutureUse()
+    {
+        $this->parameters->set('RFU', '-');
+        return $this;
+    }
+
     public function setPSign(string $p_sign)
     {
         $this->parameters->set('P_SIGN', $p_sign);
@@ -200,7 +206,7 @@ class Request implements iRequest
     {
         $html = '<form action="' . $borica->getUrl() . '" method="POST" id="'. $formId .'">';
 
-        foreach ($this->parameters->all() as $key => $value) {
+        foreach ($this->parameters->except(['RFU']) as $key => $value) {
             $html .= '<label for="'. htmlspecialchars($key, ENT_QUOTES).'">'. htmlspecialchars($key, ENT_QUOTES).'</label><br>';
             $html .= '<input name="' . htmlspecialchars($key, ENT_QUOTES) . '" value="' . htmlspecialchars($value, ENT_QUOTES) . '" style="width: 100%;"><br><br>';
         }
