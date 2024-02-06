@@ -10,6 +10,7 @@ class CompleteDeferredAuthorizationRequest extends Request
     {
         parent::__construct();
         $this->setTransactionType(TransactionType::COMPLETE_DEFERRED_AUTHORIZATION);
+        $this->setReservedForFutureUse();
     }
 
     public function validate()

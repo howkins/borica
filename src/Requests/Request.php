@@ -194,9 +194,9 @@ class Request implements iRequest
         return $this->errors->all();
     }
 
-    public function sign(Borica $borica)
+    public function sign(Borica $borica, string $macType = '')
     {
-        $mac = Borica::generateMac($this->parameters->all(), false);
+        $mac = Borica::generateMac($this->parameters->all(), false, $macType);
         $this->setPSign($borica->sign($mac));
 
         return $this;
