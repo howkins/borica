@@ -30,6 +30,7 @@ $saleRequest->setEmail('g.zhelezov@pensoft.net');
 // $saleRequest->setCountry('BG');
 // $saleRequest->setMerchantGmt('+02');
 // $saleRequest->setAddendum('AD,TD');
+$saleRequest->setMInfo(base64_encode('{"email":"g.zhelezov@pensoft.net","cardholderName":"Georgi Zhelezov"}'));
 $saleRequest->setAdCustomBoricaOrderId($saleRequest->getOrder().' '.$saleRequest->getMerchant());
 $saleRequest->setTimestamp(time());
 $saleRequest->sign($borica);
