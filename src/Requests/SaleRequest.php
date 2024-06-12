@@ -34,6 +34,7 @@ class SaleRequest extends Request
             'ADDENDUM',
             'AD.CUST_BOR_ORDER_ID',
             'TIMESTAMP',
+            'M_INFO',
             'NONCE',
             'RFU',
             'P_SIGN'
